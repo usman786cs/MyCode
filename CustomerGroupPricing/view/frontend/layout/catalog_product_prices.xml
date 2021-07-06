@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ *
+ * @category : RLTSquare
+ * @Package  : RLTSquare_CustomerGroupPricing
+ * @Author   : RLTSquare <support@rltsquare.com>
+ * @copyright Copyright 2021 © rltsquare.com All right reserved
+ * @license https://rltsquare.com/
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <referenceBlock name="render.product.prices">
+        <arguments>
+            <argument name="default" xsi:type="array">
+                <item name="prices" xsi:type="array">
+                    <item name="final_price" xsi:type="array">
+                        <item name="amount_render_template" xsi:type="string">RLTSquare_CustomerGroupPricing::product/price/render_price.phtml</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </referenceBlock>
+</layout>

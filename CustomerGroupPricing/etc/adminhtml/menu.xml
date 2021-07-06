@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category : RLTSquare
+ * @Package  : RLTSquare_CustomerGroupPricing
+ * @Author   : RLTSquare <support@rltsquare.com>
+ * @copyright Copyright 2021 © rltsquare.com All right reserved
+ * @license https://rltsquare.com/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<update id="RLT_Square::rltsquare" title="RLT Square" module="Magento_Backend" sortOrder="300" resource="RLT_Square::rltsquare"/>
+		<add id="RLTSquare_CustomerGroupPricing::customergrouppricing_main" title="Customer Group Pricing" module="RLTSquare_CustomerGroupPricing" sortOrder="10" parent="RLT_Square::rltsquare" resource="RLTSquare_CustomerGroupPricing::customergrouppricing_main"/>
+		<add id="RLTSquare_CustomerGroupPricing::customergrouppricing_add_rule" title="Customer Group Pricing Rules" module="RLTSquare_CustomerGroupPricing" sortOrder="20" parent="RLTSquare_CustomerGroupPricing::customergrouppricing_main" action="customergrouppricing/index/index" resource="RLTSquare_CustomerGroupPricing::customergrouppricing_add_rule"/>
+	</menu>
+</config>

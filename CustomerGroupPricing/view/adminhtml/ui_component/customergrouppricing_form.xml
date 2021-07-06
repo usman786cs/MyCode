@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ *
+ * @category : RLTSquare
+ * @Package  : RLTSquare_CustomerGroupPricing
+ * @Author   : RLTSquare <support@rltsquare.com>
+ * @copyright Copyright 2021 © rltsquare.com All right reserved
+ * @license https://rltsquare.com/
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+  <argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+      <item name="provider" xsi:type="string">customergrouppricing_form.customergrouppricing_form_data_source</item>
+      <item name="deps" xsi:type="string">customergrouppricing_form.customergrouppricing_form_data_source</item>
+    </item>
+    <item name="label" xsi:type="string" translate="true">General Information</item>
+    <item name="config" xsi:type="array">
+      <item name="dataScope" xsi:type="string">data</item>
+      <item name="namespace" xsi:type="string">customergrouppricing_form</item>
+    </item>
+    <item name="template" xsi:type="string">templates/form/collapsible</item>
+    <item name="buttons" xsi:type="array">
+      <item name="back" xsi:type="string">RLTSquare\CustomerGroupPricing\Block\Adminhtml\CustomerGroupPricing\BackButton</item>
+      <item name="save" xsi:type="string">RLTSquare\CustomerGroupPricing\Block\Adminhtml\CustomerGroupPricing\SaveButton</item>
+    </item>
+  </argument>
+  <dataSource name="customergrouppricing_form_data_source">
+    <argument name="dataProvider" xsi:type="configurableObject">
+      <argument name="class" xsi:type="string">RLTSquare\CustomerGroupPricing\Model\CustomerGroupPricing\DataProvider</argument>
+      <argument name="name" xsi:type="string">customergrouppricing_form_data_source</argument>
+      <argument name="primaryFieldName" xsi:type="string">customer_pricing_id</argument>
+      <argument name="requestFieldName" xsi:type="string">customer_pricing_id</argument>
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="submit_url" xsi:type="url" path="customergrouppricing/products/save"/>
+        </item>
+      </argument>
+    </argument>
+    <argument name="data" xsi:type="array">
+      <item name="js_config" xsi:type="array">
+        <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+      </item>
+    </argument>
+  </dataSource>
+  <fieldset name="general">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="label" xsi:type="string"/>
+      </item>
+    </argument>
+    <field name="customer_pricing_id">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="visible" xsi:type="boolean">false</item>
+          <item name="dataType" xsi:type="string">text</item>
+          <item name="formElement" xsi:type="string">input</item>
+          <item name="source" xsi:type="string">customergrouppricing</item>
+          <item name="dataScope" xsi:type="string">customer_pricing_id</item>
+        </item>
+      </argument>
+    </field>
+    <field name="product_name">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">text</item>
+          <item name="label" xsi:type="string" translate="true">Product Name</item>
+          <item name="disabled" xsi:type="boolean">true</item>
+          <item name="formElement" xsi:type="string">input</item>
+          <item name="source" xsi:type="string">customergrouppricing</item>
+          <item name="dataScope" xsi:type="string">product_name</item>
+          <item name="validation" xsi:type="array">
+            <item name="required-entry" xsi:type="boolean">true</item>
+          </item>
+        </item>
+      </argument>
+    </field>
+    <field name="product_sku">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">text</item>
+          <item name="label" xsi:type="string" translate="true">Product Sku</item>
+          <item name="disabled" xsi:type="boolean">true</item>
+          <item name="formElement" xsi:type="string">input</item>
+          <item name="source" xsi:type="string">customergrouppricing</item>
+          <item name="dataScope" xsi:type="string">product_sku</item>
+          <item name="validation" xsi:type="array">
+            <item name="required-entry" xsi:type="boolean">true</item>
+          </item>
+        </item>
+      </argument>
+    </field>
+  </fieldset>
+  <fieldset name="dynamic_rows_set">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="label" xsi:type="string" translate="true">Dynamic Rows</item>
+        <item name="sortOrder" xsi:type="number">10</item>
+      </item>
+    </argument>
+    <container name="customerpricing_dynamicrows">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+          <item name="template" xsi:type="string">ui/dynamic-rows/templates/default</item>
+          <item name="componentType" xsi:type="string">dynamicRows</item>
+          <item name="additionalClasses" xsi:type="string">admin__field-wide</item>
+          <item name="recordTemplate" xsi:type="string">record</item>
+          <item name="addButtonLabel" xsi:type="string">Add Row</item>
+          <item name="deleteProperty" xsi:type="boolean">false</item>
+        </item>
+      </argument>
+      <container name="record">
+        <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+            <item name="label" xsi:type="string" translate="true">Dynamic Rows</item>
+            <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+            <item name="isTemplate" xsi:type="boolean">true</item>
+            <item name="is_collection" xsi:type="boolean">true</item>
+            <item name="showFallbackReset" xsi:type="boolean">false</item>
+          </item>
+        </argument>
+        <field name="row_id">
+          <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+              <item name="label" xsi:type="string" translate="true">ID</item>
+              <item name="visible" xsi:type="boolean">false</item>
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="formElement" xsi:type="string">input</item>
+              <item name="dataScope" xsi:type="string">row_id</item>
+            </item>
+          </argument>
+        </field>
+        <field name="apply_price_on">
+          <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">RLTSquare\CustomerGroupPricing\Model\Config\Source\ApplyPriceOn</item>
+            <item name="config" xsi:type="array">
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="formElement" xsi:type="string">select</item>
+              <item name="component" xsi:type="string">
+                RLTSquare_CustomerGroupPricing/js/components/select-type-handler</item>
+                <item name="label" xsi:type="string" translate="true">Apply Price On</item>
+                <item name="dataScope" xsi:type="string">apply_price_on</item>
+                <item name="default" xsi:type="string">0</item>
+                <item name="disabled" xsi:type="boolean">false</item>
+                <item name="showFallbackReset" xsi:type="boolean">false</item>
+              </item>
+            </argument>
+          </field>
+          <field name="customer_id">
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="label" xsi:type="string" translate="true">Customer ID</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="dataScope" xsi:type="string">customer_id</item>
+                <item name="showFallbackReset" xsi:type="boolean">false</item>
+                <item name="validation" xsi:type="array">
+                  <item name="required-entry" xsi:type="boolean">true</item>
+                </item>
+              </item>
+            </argument>
+          </field>
+          <field name="customer_group">
+            <argument name="data" xsi:type="array">
+              <item name="options" xsi:type="object">RLTSquare\CustomerGroupPricing\Model\Config\Source\CustomerGroups</item>
+              <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="formElement" xsi:type="string">multiselect</item>
+                <!-- <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item> -->
+                <item name="label" xsi:type="string" translate="true">Customer ID</item>
+                <item name="dataScope" xsi:type="string">customer_group</item>
+                <item name="default" xsi:type="string">0</item>
+                <item name="disabled" xsi:type="boolean">false</item>
+                <item name="showFallbackReset" xsi:type="boolean">false</item>
+              </item>
+            </argument>
+          </field>
+          <field name="start_date">
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">dateRange</item>
+                <item name="dataType" xsi:type="string">date</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="component" xsi:type="string">Magento_Ui/js/form/element/date</item>
+                <item name="label" xsi:type="string" translate="true">Start Date</item>
+                <item name="dataScope" xsi:type="string">start_date</item>
+                <item name="disabled" xsi:type="boolean">false</item>
+                <item name="options" xsi:type="array">
+                  <item name="dateFormat" xsi:type="string">y-MM-dd</item>
+                </item>
+                <item name="validation" xsi:type="array">
+                  <item name="required-entry" xsi:type="boolean">true</item>
+                </item>
+              </item>
+            </argument>
+          </field>
+          <field name="end_date">
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">dateRange</item>
+                <item name="dataType" xsi:type="string">date</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="component" xsi:type="string">Magento_Ui/js/form/element/date</item>
+                <item name="label" xsi:type="string" translate="true">End Date</item>
+                <item name="dataScope" xsi:type="string">end_date</item>
+                <item name="disabled" xsi:type="boolean">false</item>
+                <item name="options" xsi:type="array">
+                  <item name="dateFormat" xsi:type="string">y-MM-dd</item>
+                </item>
+                <item name="validation" xsi:type="array">
+                  <item name="required-entry" xsi:type="boolean">true</item>
+                </item>
+              </item>
+            </argument>
+          </field>
+          <field name="price">
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="label" xsi:type="string" translate="true">Price</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="dataScope" xsi:type="string">price</item>
+                <item name="showFallbackReset" xsi:type="boolean">false</item>
+                <item name="validation" xsi:type="array">
+                  <item name="required-entry" xsi:type="boolean">true</item>
+                </item>
+              </item>
+            </argument>
+          </field>
+          <field name="status">
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">boolean</item>
+                <item name="label" xsi:type="string" translate="true">Enable</item>
+                <item name="formElement" xsi:type="string">checkbox</item>
+                <item name="dataScope" xsi:type="string">status</item>
+                <item name="prefer" xsi:type="string">toggle</item>
+                <item name="valueMap" xsi:type="array">
+                  <item name="true" xsi:type="number">1</item>
+                  <item name="false" xsi:type="number">0</item>
+                </item>
+                <item name="default" xsi:type="number">1</item>
+              </item>
+            </argument>
+          </field>
+          <actionDelete>
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                <item name="componentType" xsi:type="string">actionDelete</item>
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="fit" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string">Actions</item>
+                <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+              </item>
+            </argument>
+          </actionDelete>
+        </container>
+      </container>
+    </fieldset>
+  </form>

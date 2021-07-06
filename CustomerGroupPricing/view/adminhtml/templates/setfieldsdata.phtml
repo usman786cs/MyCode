@@ -1,0 +1,37 @@
+<?php
+/**
+ *
+ * @category : RLTSquare
+ * @Package  : RLTSquare_CustomerGroupPricing
+ * @Author   : RLTSquare <support@rltsquare.com>
+ * @copyright Copyright 2021 © rltsquare.com All right reserved
+ * @license https://rltsquare.com/
+ */
+
+?>
+
+<script type="text/javascript">
+    require(
+        ['jquery'],
+        function ($) {
+            var ajaxcount = 0;
+            window.setInterval(function () {
+                if (!($("[name='product_name']").val()) && $("[name='product_name']").length && ajaxcount < 1) {
+                    $.ajax({
+                        method: "POST",
+                        url: "<?= /** @noEscape */ $block->getUrl('customergrouppricing/products/productname'); ?>",
+                        data: {
+                            attribute_code: 1
+                        },
+                        success: function (data) {
+                            $("[name='product_name']").val(data.product_name);
+                            $("[name='product_sku']").val(data.product_sku);
+                        },
+                        error: function (error) {
+                        }
+                    });
+                    ajaxcount = 2;
+                }
+            }, 300);
+        });
+</script>

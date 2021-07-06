@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category : RLTSquare
+ * @Package  : RLTSquare_CustomerGroupPricing
+ * @Author   : RLTSquare <support@rltsquare.com>
+ * @copyright Copyright 2021 © rltsquare.com All right reserved
+ * @license https://rltsquare.com/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="change_price_plugin" type="RLTSquare\CustomerGroupPricing\Plugin\ChangePrice" sortOrder="10" disabled="false"/>
+    </type>
+</config>

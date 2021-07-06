@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category : RLTSquare
+ * @Package  : RLTSquare_CustomerGroupPricing
+ * @Author   : RLTSquare <support@rltsquare.com>
+ * @copyright Copyright 2021 © rltsquare.com All right reserved
+ * @license https://rltsquare.com/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customergrouppricing_listing_data_source" xsi:type="string">RLTSquare\CustomerGroupPricing\Model\ResourceModel\CustomerGroupPricing\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="RLTSquare\CustomerGroupPricing\Model\ResourceModel\CustomerGroupPricing\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">rlts_customer_group_pricing</argument>
+            <argument name="eventPrefix" xsi:type="string">customergrouppricing_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">customergrouppricing_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">RLTSquare\CustomerGroupPricing\Model\ResourceModel\CustomerGroupPricing</argument>
+        </arguments>
+    </type>
+    <virtualType name="CustomerGroupPricingGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="CustomerGroupPricingGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">RLTSquare\CustomerGroupPricing\Model\ResourceModel\CustomerGroupPricing\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">CustomerGroupPricingGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <!-- Products Listing  -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customergrouppricing_products_listing_data_source" xsi:type="string">RLTSquare\CustomerGroupPricing\Model\ResourceModel\ProductListing\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="RLTSquare\CustomerGroupPricing\Model\ResourceModel\ProductListing\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">catalog_product_entity</argument>
+            <argument name="eventPrefix" xsi:type="string">customergrouppricing_product_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">customergrouppricing_product_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">RLTSquare\CustomerGroupPricing\Model\ResourceModel\ProductListing</argument>
+        </arguments>
+    </type>
+    <virtualType name="ProductListingGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ProductListingGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">RLTSquare\CustomerGroupPricing\Model\ResourceModel\ProductListing\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">ProductListingGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <preference for="RLTSquare\CustomerGroupPricing\Api\Data\CustomerGroupPricingInterface" type="RLTSquare\CustomerGroupPricing\Model\CustomerGroupPricing"/>
+    <preference for="RLTSquare\CustomerGroupPricing\Api\CustomerGroupPricingRepositoryInterface" type="RLTSquare\CustomerGroupPricing\Model\CustomerGroupPricingRepository"/>
+    <preference for="RLTSquare\CustomerGroupPricing\Api\Data\CustomerGroupPricingSearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
+</config>

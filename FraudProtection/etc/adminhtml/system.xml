@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category : RLTSquare
+ * @Package  : RLTSquare_FraudProtection
+ * @Author   : RLTSquare <support@rltsquare.com>
+ * @copyright Copyright 2021 © rltsquare.com All right reserved
+ * @license https://rltsquare.com/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="rltsquare" translate="label" sortOrder="10">
+            <label>RLTSquare</label>
+        </tab>
+        <section id="rltsquare_fraud_prevention" translate="label" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Fraud Prevention</label>
+            <tab>rltsquare</tab>
+            <resource>Magento_Config::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="forbidden_ips" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Forbidden IPs</label>
+                    <comment><![CDATA[Comma separated.]]></comment>
+                    <backend_model>Magento\Developer\Model\Config\Backend\AllowedIps</backend_model>
+                </field>
+                <field id="forbidden_email" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Restricted emails</label>
+                    <comment><![CDATA[Comma separated.]]></comment>
+                    <backend_model>RLTSquare\FraudProtection\Model\Config\Backend\RestrictedEmailAddresses</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
